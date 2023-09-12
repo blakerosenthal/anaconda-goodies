@@ -33,4 +33,5 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.TEST_PYPI_TOKEN }}
         run: |
           twine check dist/*
-          twine upload dist/*
+          # twine upload dist/*
+          twine upload --repository testpypi dist/*
