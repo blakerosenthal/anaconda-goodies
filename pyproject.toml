@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools", "setuptools-git-versioning"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anaconda-goodies"
+dynamic = ["version"]
+description = "Anaconda extras and extensions"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "BSD-3-Clause"}
+dependencies = [
+    "anaconda-cloud-cli",
+    "anaconda-cloud-auth",
+]
+
+[tool.setuptools-git-versioning]
+enabled = true
+dev_template = "{tag}+{ccount}.g{sha}"
+dirty_template = "{tag}+{ccount}.g{sha}.dirty"
