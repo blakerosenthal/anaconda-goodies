@@ -1,0 +1,46 @@
+{% set repo = "blakerosenthal" %}
+{% set name = "anaconda-goodies" %}
+{% set version = "0.0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/{{ repo }}/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
+  sha256: 15c519ce7861064ec135f23e2d8e9b30697007ae3c90a7261547f269c479110
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - python >=3.8
+    - setuptools
+    - setuptools-git-versioning
+    - pip
+  run:
+    - python >=3.8
+    - anaconda-cloud-cli
+    - anaconda-cloud-auth
+
+test:
+  imports:
+    - anaconda-cloud-cli
+    - anaconda-cloud-auth
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/{{ repo }}/{{ name }}
+  summary: Anaconda extensions
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - blakerosenthal
